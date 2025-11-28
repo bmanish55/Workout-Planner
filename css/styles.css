@@ -1,0 +1,112 @@
+:root{
+  --accent-1: #6ea8fe;
+  --accent-2: #4b6ef6;
+  --muted:#6c757d;
+  --card-bg: #ffffff;
+}
+html,body{height:100%;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;background:linear-gradient(180deg,#f3f7ff 0%, #ffffff 50%);}
+.app-shell{max-width:640px;margin:0 auto}
+
+.card{border-radius:14px}
+
+/* Selector Card Responsive Styling */
+.selector-card{background:linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);border:2px solid #e8f0ff}
+
+.selector-card #dateInput{min-width:120px}
+
+.selector-card #daySelect{min-width:140px}
+
+.selector-content{word-break:break-word}
+
+#currentLabel{font-size:clamp(0.95rem, 3vw, 1.1rem);color:#4b6ef6;line-height:1.3}
+
+#detectedLabel{font-size:clamp(0.8rem, 2.5vw, 0.9rem);line-height:1.2}
+
+#rescheduleBtn{font-size:clamp(0.8rem, 2vw, 0.9rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+@media(max-width:480px){
+  .selector-card{padding:0.75rem !important}
+  .selector-card #dateInput,.selector-card #daySelect{font-size:0.875rem}
+  #currentLabel{margin-bottom:0.25rem !important}
+}
+
+/* Enhanced Navbar Styling */
+.custom-navbar{background:linear-gradient(90deg, #ffffff 0%, #f8fbff 100%);border-bottom:2px solid #e8f0ff;padding:0.75rem 0 !important;border-radius:0}
+
+.custom-navbar .navbar-brand{font-size:1.1rem;letter-spacing:0.5px;font-weight:700}
+
+.custom-toggler{border:none;padding:0.35rem 0.5rem;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));border-radius:8px;transition:all 0.3s ease}
+
+.custom-toggler:focus{box-shadow:0 0 0 0.25rem rgba(75, 110, 246, 0.25)}
+
+.custom-toggler span{background-color:#fff !important;height:2px;width:20px;display:block;margin:3px 0;transition:all 0.3s ease;border-radius:2px}
+
+.custom-nav-btn{color:var(--muted);font-weight:500;padding:0.5rem 1rem !important;border-radius:8px;transition:all 0.3s ease;cursor:pointer;position:relative}
+
+.custom-nav-btn:hover{background:rgba(75, 110, 246, 0.1);color:var(--accent-2) !important}
+
+.custom-nav-btn i{font-size:1.2rem}
+
+.navbar-collapse{background:linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);border-radius:12px;margin-top:0.5rem;padding:1rem;border:1px solid #e8f0ff}
+
+#workoutArea .exercise{border-radius:12px;padding:14px;margin-bottom:12px;background:linear-gradient(180deg,var(--card-bg),#f7fbff);box-shadow:0 10px 22px rgba(63,81,181,0.06);transform:translateY(0);animation:fadeUp .35s ease both}
+#workoutArea .exercise.completed-exercise{background:linear-gradient(180deg,#d4edda,#e8f5e9);box-shadow:0 10px 22px rgba(76,175,80,0.15)}
+.exercise .meta{font-size:0.85rem;color:var(--muted)}
+.exercise .sets{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.set-btn{min-width:48px;height:44px;border-radius:10px;transition:transform .12s ease, box-shadow .12s ease, background .2s,color .2s;display:inline-flex;align-items:center;justify-content:center}
+.set-btn:hover{transform:translateY(-3px);box-shadow:0 6px 12px rgba(76,90,255,0.08)}
+.set-btn.completed{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#fff;border:0}
+
+.exercise .name i{font-size:1.05rem;color:var(--accent-2);vertical-align:middle;margin-right:8px}
+
+.progress-small{height:8px;border-radius:8px}
+
+.offcanvas.offcanvas-bottom{height:56vh;border-top-left-radius:14px;border-top-right-radius:14px}
+.offcanvas-body{padding:1rem}
+
+.btn-primary{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));border:0}
+
+/* Motivation Modal Styling */
+@keyframes brutal-ambulance-cycle{
+  0%{background-color:#FF0000;opacity:1}
+  25%{background-color:#FF0000;opacity:1}
+  33%{background-color:#0047AB;opacity:1}
+  50%{background-color:#0047AB;opacity:1}
+  67%{background-color:#FFD700;opacity:1}
+  100%{background-color:#FFD700;opacity:1}
+}
+
+.ambulance-overlay{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1030;display:none}
+
+.ambulance-overlay.active-red{animation:brutal-ambulance-cycle 1.2s ease-in-out infinite;opacity:1}
+
+.motivation-modal{border:3px solid #FF6B6B;background:linear-gradient(180deg, #fff8f8 0%, #ffffff 100%);position:relative;z-index:1050}
+
+.motivation-title{color:#FF6B6B;font-weight:700;font-size:1.4rem;line-height:1.4}
+
+.quote-display{min-height:100px;display:flex;align-items:center;justify-content:center;padding:1rem;background:linear-gradient(135deg, #f8f9ff 0%, #fff0f0 100%);border-radius:12px;border:2px solid #ffe0e0}
+
+.divider{height:2px;background:linear-gradient(90deg, transparent, #FF6B6B, transparent);margin:1rem 0}
+
+.stats-display{background:linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);padding:1rem;border-radius:8px;border-left:4px solid #FF6B6B}
+
+.motivation-icon{animation:pulse-scale 1.5s infinite}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+@keyframes burst{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0}}
+
+@keyframes pulse-scale{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
+
+.fireworks-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}
+
+.firework{position:absolute;width:16px;height:16px;border-radius:50%;box-shadow:0 0 10px currentColor;animation:burst 1.2s ease-out forwards}
+
+.celebration-modal{border: 3px solid #FFD700; box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);}
+
+.celebration-icon{animation:pulse-scale 2s infinite}
+
+@media (max-width:420px){
+  .app-shell{padding:12px}
+  .exercise .name{font-size:1rem}
+}

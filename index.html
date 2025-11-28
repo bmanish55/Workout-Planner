@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Workout Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body class="bg-light">
+    <div class="app-shell container-fluid p-3">
+      <!-- Responsive navbar with Today button and instruction links -->
+      <nav class="navbar navbar-expand-lg navbar-dark custom-navbar mb-3 p-0">
+        <div class="container-fluid p-0 align-items-center">
+          <a class="navbar-brand mb-0 fw-bold" href="#">
+            <i class="bi bi-dumbbell me-2" style="font-size: 1.3rem; color: #4b6ef6;"></i><span style="color: #4b6ef6;">Workout Planner</span>
+          </a>
+          <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+              <li class="nav-item">
+                <button class="nav-link custom-nav-btn d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#warmupModal"><i class="bi bi-fire"></i><span class="d-none d-md-inline">Warm-up</span></button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link custom-nav-btn d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#cardioModal"><i class="bi bi-activity"></i><span class="d-none d-md-inline">Cardio</span></button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link custom-nav-btn d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#rulesModal"><i class="bi bi-list-check"></i><span class="d-none d-md-inline">Rules</span></button>
+              </li>
+              
+              <li class="nav-item d-lg-none mt-2">
+                <!-- Today button visible in collapsed menu on small screens -->
+                <button id="todayBtnMobile" class="btn btn-sm btn-primary w-100"><i class="bi bi-calendar-check me-1"></i>Today</button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Today button for larger screens -->
+          <div class="d-none d-lg-block ms-2">
+            <button id="todayBtn" class="btn btn-sm btn-primary"><i class="bi bi-calendar-check me-1"></i>Today</button>
+          </div>
+        </div>
+      </nav>
+
+      <section class="card mb-3 p-3 selector-card">
+        <div class="d-flex gap-2 mb-3 flex-wrap">
+          <input id="dateInput" type="date" class="form-control form-control-sm" />
+          <select id="daySelect" class="form-select form-select-sm flex-grow-1">
+            <option value="auto">Auto-detect</option>
+            <option value="day1">Day 01</option>
+            <option value="day2">Day 02</option>
+            <option value="day3">Day 03</option>
+            <option value="day4">Day 04</option>
+            <option value="day5">Day 05</option>
+            <option value="jogging">Jogging</option>
+          </select>
+        </div>
+        <div class="selector-content mb-2">
+          <div>
+            <strong id="currentLabel" class="d-block fw-bold" style="font-size: 1rem; color: #4b6ef6; margin-bottom: 0.5rem;">Selected: —</strong>
+            <div class="text-muted small" id="detectedLabel" style="font-size: 0.85rem;">Detected: —</div>
+          </div>
+        </div>
+        <button id="rescheduleBtn" class="btn btn-sm btn-outline-secondary w-100 mt-2">Reschedule / Missed</button>
+      </section>
+
+      <section id="workoutArea"></section>
+
+      <!-- Giving Up Button -->
+      <div class="text-center mt-4 mb-3">
+        <button id="givingUpBtn" class="btn btn-outline-danger btn-lg w-100"><i class="bi bi-exclamation-triangle me-2"></i>Giving Up?</button>
+      </div>
+
+      <!-- Fireworks celebration -->
+      <div id="fireworks" class="fireworks-container"></div>
+
+      <!-- Full-Screen Ambulance Light Overlay -->
+      <div id="ambulanceOverlay" class="ambulance-overlay"></div>
+
+      <!-- Motivation Modal (Ambulance Light Effect) -->
+      <div class="modal fade" id="motivationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content motivation-modal">
+            <div class="modal-body text-center py-5 px-4">
+              <div class="motivation-icon mb-3">
+                <i class="bi bi-fire" style="font-size: 3rem; color: #FF6B6B;"></i>
+              </div>
+              <h2 id="motivationTitle" class="mb-2 motivation-title">क्षुद्रं हृदयदौर्बल्यं त्यक्त्वोत्तिष्ठ परन्तप</h2>
+              <p id="motivationSubtitle" class="small text-muted mb-4"></p>
+              <div class="divider mb-4"></div>
+              <div id="randomQuote" class="quote-display mb-4">
+                <p class="lead fw-bold" style="color: #FF6B6B; font-size: 1.1rem;"></p>
+              </div>
+              <div id="motivationStats" class="stats-display mb-4 small text-muted">
+                <div>You've already completed <strong id="completedSets">0</strong> sets today! 💪</div>
+              </div>
+              <div class="divider mb-4"></div>
+            </div>
+            <div class="modal-footer justify-content-center border-0 gap-2 flex-wrap">
+              <button id="continueWorkoutBtn" type="button" class="btn btn-danger btn-lg px-5">
+                🔱 हर हर महादेव !!
+              </button>
+              <button id="resetTodayBtn" type="button" class="btn btn-warning btn-lg px-5">
+                🔄 Reset Today
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="mt-4 text-center small text-muted">💪 Train Hard • Stay Strong • Never Give Up 🔥<br><span style="font-size: 0.9rem; color: #4b6ef6; font-weight: 600; margin-top: 0.5rem; display: block;">By Manish Bhavar</span></footer>
+    </div>
+
+    <!-- Exercise panel -->
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="exercisePanel">
+      <div class="offcanvas-header">
+        <h5 id="exerciseTitle" class="offcanvas-title"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body small" id="exerciseBody"></div>
+    </div>
+
+    <!-- Reschedule Modal -->
+    <div class="modal fade" id="rescheduleModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Reschedule / Missed Workout</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="small text-muted">Original date</div>
+            <div id="rescheduleOrig" class="fw-semibold mb-2">—</div>
+            <label class="small text-muted">Pick target date</label>
+            <input id="rescheduleTarget" type="date" class="form-control mb-2" />
+            <div class="form-text">When a mapping exists, selecting the original date will show the mapped workout.</div>
+          </div>
+          <div class="modal-footer">
+            <button id="rescheduleClearBtn" type="button" class="btn btn-outline-secondary">Clear mapping</button>
+            <button id="rescheduleSaveBtn" type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instruction Modals -->
+    <div class="modal fade" id="warmupModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-md modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Warm-up Instructions</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="warmupContent" class="small text-muted">Loading...</div>
+            <hr />
+            <div class="small text-muted">Use the Import button in the navbar to load PDF text into these boxes.</div>
+          </div>
+          <div class="modal-footer">
+            <button id="warmupSave" type="button" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="cardioModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-md modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Cardio Instructions</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="cardioContent" class="small text-muted">Loading...</div>
+            <hr />
+            <div class="small text-muted">Use the Import button in the navbar to load PDF text into these boxes.</div>
+          </div>
+          <div class="modal-footer">
+            <button id="cardioSave" type="button" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="rulesModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-md modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">General Rules</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="rulesContent" class="small text-muted">Loading...</div>
+            <hr />
+            <div class="small text-muted">Use the Import button in the navbar to load PDF text into these boxes.</div>
+          </div>
+          <div class="modal-footer">
+            <button id="rulesSave" type="button" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Completion Celebration Modal -->
+    <div class="modal fade" id="completionModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content celebration-modal">
+          <div class="modal-body text-center py-5">
+            <div class="celebration-icon mb-3">
+              <i class="bi bi-trophy-fill" style="font-size: 4rem; color: #FFD700;"></i>
+            </div>
+            <h2 class="mb-3" style="color: #4b6ef6;">🎉 All Set! 🎉</h2>
+            <p class="lead mb-2">Great job completing your workout!</p>
+            <div class="completion-time p-3 bg-light rounded" style="border: 2px solid #FFD700;">
+              <div class="small text-muted mb-1">Total Workout Time</div>
+              <div class="h3 fw-bold" id="totalTimeDisplay" style="color: #4b6ef6;">— : —</div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button id="completionResetBtn" type="button" class="btn btn-primary">Great Work! 💪</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
