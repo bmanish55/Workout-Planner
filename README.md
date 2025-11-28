@@ -49,7 +49,6 @@
 ### 🏆 **Completion Celebration**
 - **10+ second fireworks animation** with 60+ colorful particles
 - **Modal celebration** with total workout time
-- **"हर हर महादेव!!"** button to continue or start fresh
 - Instant motivation upon achievement
 
 ### 💾 **Offline Storage**
@@ -65,68 +64,8 @@
 - Curated YouTube video links per exercise
 - Ability to set custom video URLs
 
-### 📖 **Instruction Modals**
-- Warm-up guidelines
-- Cardio recommendations  
-- General training rules
-- Customizable saved notes
-
 ---
 
-## 📱 Workout Structure
-
-### Day 1: **PUSH** (Chest + Shoulders + Triceps)
-- Incline Dumbbell Press (4×10)
-- Dumbbell Floor Press (4×12)
-- Pec Deck Fly (3×12)
-- Seated Dumbbell Lateral Raises (4×12)
-- Rope Pushdowns (3×12)
-- Skull Crushers (3×12)
-- Wrist Roller (2 rounds)
-
-### Day 2: **PULL** (Back + Biceps + Forearms)
-- Lat Pulldown (4×10)
-- Seated Cable Row (4×12)
-- Chest-supported Dumbbell Row (3×12)
-- Straight-arm Pulldown (3×15)
-- Hammer Curls (4×12)
-- Reverse Barbell Curls (3×12)
-- Farmer's Walk (3×45 sec)
-- Wrist Curls (3×15)
-
-### Day 3: **LEGS + CORE** (Sciatica Safe)
-- Leg Press (4×12)
-- Romanian Deadlift (4×10)
-- Goblet Squats (3×12)
-- Hip Thrust (3×12)
-- Standing Calf Raises (4×15)
-- Reverse Crunch (3×15)
-- Plank (3×45 sec)
-
-### Day 4: **UPPER BODY HYPERTROPHY**
-- Machine Chest Press (3×15)
-- Dumbbell Row (3×12)
-- Seated Dumbbell Lateral Raise (4×15)
-- Rear Delt Fly (3×15)
-- Barbell Curls + Rope Pushdown superset (3×12)
-- Reverse Grip Cable Curl (3×15)
-- Decline Crunch (3×12)
-
-### Day 5: **FULL BODY + ABS**
-- Dumbbell Bench Press (4×10)
-- Lat Pulldown (4×10)
-- Leg Press (3×12)
-- Dumbbell RDL (3×10)
-- Russian Twists (3×20)
-- Mountain Climbers (2×30 sec)
-- Cable Woodchoppers (3×12)
-- Farmer's Walk (2 rounds)
-
-### Days 6-7: **Active Recovery - Jogging**
-- Motivational messages
-- Light cardio recommendations
-
----
 
 ## 🚀 Quick Start
 
@@ -153,7 +92,6 @@ firefox index.html  # Linux
 - When all sets are done, exercises turn **green**
 - Complete all exercises to trigger **fireworks celebration**
 - View your total workout time
-- Click **"हर हर महादेव!!"** to reset or continue
 
 ---
 
@@ -171,8 +109,6 @@ firefox index.html  # Linux
 2. Screen flashes emergency ambulance lights 🚨
 3. Get Sanskrit wisdom and random motivation quotes
 4. Stats show how many sets you've already crushed
-5. Click **"हर हर महादेव!!"** to continue
-6. Or **"🔄 Reset Today"** to start fresh
 
 ### 📅 **Reschedule Missed Workouts**
 1. Click **"Reschedule / Missed"** button
@@ -253,83 +189,6 @@ You can customize the workouts by editing `js/app.js`:
 
 ---
 
-## 🛠️ Project Structure
-
-```
-Workout-Planner/
-├── index.html          # Main HTML file
-├── css/
-│   └── styles.css      # All styling (mobile-first)
-├── js/
-│   └── app.js          # Complete app logic (928 lines)
-└── README.md           # This file
-```
-
-### Technologies Used
-- **HTML5** - Semantic structure
-- **CSS3** - Mobile-first responsive design
-- **Vanilla JavaScript** - No frameworks needed
-- **Bootstrap 5.3.2** - UI components & responsiveness
-- **Bootstrap Icons 1.11.3** - Beautiful icons
-- **LocalStorage API** - Offline data persistence
-
----
-
-## 🚀 Features in Detail
-
-### 🔥 Emergency Motivation System
-When you click "Giving Up?":
-1. **Full-screen ambulance lights** blink (Red → Blue → Gold)
-2. **Sanskrit motivational title** appears
-3. **Random motivational quote** from 50+ options
-4. **Today's stats** show sets completed
-5. **Two action buttons**:
-   - 🔱 Continue workout
-   - 🔄 Reset today and start fresh
-
-### 🎆 Celebration on Completion
-When all exercises are done:
-1. **Fireworks burst** from center (10 seconds, 8 colors)
-2. **Modal pops up** with celebration message
-3. **Total workout time** displayed (MM:SS)
-4. **Trophy icon** 🏆 with motivational text
-5. **"हर हर महादेव!!"** button appears
-
-### 📊 Progress Tracking
-- Each exercise shows: `X/Y sets` completed
-- Color coding:
-  - 🔵 Blue gradient: Incomplete
-  - 🟢 Green gradient: Complete
-- Total workout time tracked
-
----
-
-## 💪 Use Cases
-
-### 💼 For Personal Trainers
-- Share with clients
-- Track client progress
-- No subscription needed
-- Fully customizable
-
-### 🏋️ For Gym Goers
-- Track daily workouts
-- Set reminders via phone browser
-- Never forget a day
-- See your consistency
-
-### 🎯 For Athletes
-- Structured program tracking
-- Set-by-set precision
-- Motivation when tired
-- Progress visualization
-
-### 👥 For Fitness Communities
-- Share your program link
-- Everyone gets their own local tracking
-- No data collection
-- Privacy-first design
-
 ---
 
 ## 🔐 Privacy & Security
@@ -383,14 +242,6 @@ This app is designed to help you **START** and **STAY** committed to your fitnes
 
 ---
 
-## 📱 Download & Use
-
-1. **No installation needed** - Just open `index.html`
-2. **Works on any device** - Phone, tablet, desktop
-3. **No internet required** - Full offline support
-4. **Free forever** - No premium, no ads, no tracking
-
----
 
 ## 🌟 Support This Project
 
