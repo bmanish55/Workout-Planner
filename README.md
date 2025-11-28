@@ -1,6 +1,7 @@
 # 💪 Workout Planner - Your Personal Training Companion
 
 > **Transform Your Fitness Journey** - A powerful, mobile-first workout tracking application designed to keep you motivated and on track with your training goals.
+https://workoutplannermb.netlify.app/
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
